@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -31,12 +33,22 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
+    /**
+     * The list of attributes to cast.
+     *
+     * @var array
+     */
     protected $casts = [
         'settings' => 'json'
     ];
 
+    /**
+     * Get the user settings.
+     *
+     * @return Settings
+     */
     public function settings()
     {
-        return new Settings($this);
+        return new Settings($this->settings, $this);
     }
 }

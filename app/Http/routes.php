@@ -1,11 +1,21 @@
 <?php
 
 Route::get('/', function () {
-    return App\User::first();
+    // settings('foo');
+    // settings()->get('foo');
+    // settings()->set('fizz', 'buzz');
+    // settings()->merge(['new' => 'stuff']);
+    // settings()->foo;
+    // settings()->has('foo');
+    // settings()->all();
+
+    return 'See your routes file.';
 });
 
-Route::get('settings', function() {
-    App\User::first()->settings()->merge(Request::all());
-
-    return redirect('/');
-});
+// HOMEWORK;
+// Update your Settings class to allow for the setting of properties, like so:
+//
+// settings('foo', 'bar')
+//
+// If two arguments are provided, we are setting a value. If one is provided,
+// we are getting a value. If none are provided, we get the Settings object.
